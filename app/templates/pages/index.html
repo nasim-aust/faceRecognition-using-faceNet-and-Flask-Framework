@@ -1,0 +1,114 @@
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-chart">
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-12">
+                    <h2 class="card-title">Search</h2>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <form role="form" method="post" action="" enctype="multipart/form-data" id="search_people_form">
+
+                  {{ form.hidden_tag() }}
+                  {{ form.csrf_token }}
+
+                  <div class="row">
+
+                    <div class="col-md-1 px-md-1"></div>
+
+                    <div class="col-md-3 px-md-1">
+                      <div class="form-group">
+                        <label>Search People</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5 px-md-1">
+                      <div class="form-group">
+                        {{ form.search_image(placeholder="Search People",class="form-control") }}
+                      </div>
+                    </div>
+                    {% if search_image %}
+                    <div class="col-md-3 px-md-1">
+                      <img src="{{url_for('static', filename=search_image)}}" width="100" height="auto">
+                    </div>
+                    {% endif %}
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card ">
+              <div class="card-header">
+                <h4 class="card-title">People</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table tablesorter " id="">
+                    <thead class=" text-primary">
+                      <tr>
+                        <th>
+                          Name
+                        </th>
+                        <th>
+                          Email
+                        </th>
+                        <th>
+                          Gender
+                        </th>
+                        <th class="text-center">
+                          Photo
+                        </th>
+                        {% if score %}
+                        <th>
+                          Score
+                        </th>
+                        {% endif %}
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% if people %}
+                      {% for p in people %}
+                      <tr>
+                        <td>
+                          {{p.name}}
+                        </td>
+                        <td>
+                          {{p.email}}
+                        </td>
+                        <td>
+                          {{p.gender}}
+                        </td>
+                        <td class="text-center">
+                          <img src="{{url_for('static', filename=p.image_url)}}" width="70" height="auto">
+                        </td>
+                        {% if score %}
+                        <td>
+                          {{ score }} %
+                        </td>
+                        {% endif %}
+                      </tr>
+                      {% endfor %}
+                    {% else %}
+                      <tr>
+                        <td colspan="4">
+                          No people found!
+                        </td>
+                      </tr>
+                    {% endif %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+

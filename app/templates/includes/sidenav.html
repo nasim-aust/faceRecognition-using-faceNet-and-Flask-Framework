@@ -1,0 +1,56 @@
+
+    <div class="sidebar">
+      <!-- Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red" -->
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <a href="" class="simple-text logo-mini">
+            Face
+          </a>
+          <a href="" class="simple-text logo-normal">
+            Recognition
+          </a>
+        </div>
+        <ul class="nav">
+          <li {% if request.path == '/' %} class="active" {% endif %}>
+            <a href="/">
+              <i class="tim-icons icon-zoom-split"></i>
+              <p>Search</p>
+            </a>
+          </li>
+          <li {% if request.path == '/add_people.html' %} class="active" {% endif %}>
+            <a href="/add_people.html">
+              <i class="tim-icons icon-simple-add"></i>
+              <p>Add People</p>
+            </a>
+          </li>
+          <li {% if request.path == '/user.html' %} class="active" {% endif %}>
+            <a href="/user.html">
+              <i class="tim-icons icon-single-02"></i>
+              <p>User Profile</p>
+            </a>
+          </li>
+
+          {% if current_user.is_authenticated %}
+
+          <li>
+            <a href={{ url_for('logout') }}>
+              <i class="tim-icons icon-button-pause"></i>
+              <p>Logout</p>
+            </a>
+          </li>
+
+          {% else %}
+
+          <li {% if request.path == '/login.html' %} class="active" {% endif %}>
+            <a href={{ url_for('login') }}>
+              <i class="tim-icons icon-triangle-right-17"></i>
+              <p>Login</p>
+            </a>
+          </li>
+
+          {% endif %}
+
+        </ul>
+      </div>
+    </div>
+

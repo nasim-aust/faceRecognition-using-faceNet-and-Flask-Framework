@@ -1,0 +1,128 @@
+
+      <div class="content">
+        <div class="row">
+          <div class="col-md-10">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="title">Add People</h5>
+
+                    {% if msg %}
+                      <label>{{ msg | safe }}</label>
+                    {% else %}
+                      <label>Please add people's information</label>
+                    {% endif %}
+
+              </div>
+              <div class="card-body">
+
+              <form role="form" method="post" action="" enctype="multipart/form-data">
+
+                  {{ form.hidden_tag() }}
+                  {{ form.csrf_token }}
+
+                  <div class="row">
+
+                    <div class="col-md-1 px-md-1"></div>
+
+                    <div class="col-md-3 px-md-1">
+                      <div class="form-group">
+                        <label>Name</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5 px-md-1">
+                      <div class="form-group">
+                        {{ form.name(placeholder="Name",class="form-control") }}
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+
+                    <div class="col-md-1 px-md-1"></div>
+
+                    <div class="col-md-3 px-md-1">
+                      <div class="form-group">
+                        <label>Email</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5 px-md-1">
+                      <div class="form-group">
+                        {{ form.email(placeholder="Email",class="form-control") }}
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+
+                    <div class="col-md-1 px-md-1"></div>
+
+                    <div class="col-md-3 px-md-1">
+                      <div class="form-group">
+                        <label>Age</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5 px-md-1">
+                      <div class="form-group">
+                        {{ form.age(placeholder="Age",class="form-control",type="number") }}
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+
+                    <div class="col-md-1 px-md-1"></div>
+
+                    <div class="col-md-3 px-md-1">
+                      <div class="form-group">
+                        <label>Gender</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5 px-md-1">
+                      <div class="form-group">
+                        {{ form.gender(placeholder="Gender",class="form-control",type="select") }}
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+
+                    <div class="col-md-1 px-md-1"></div>
+
+                    <div class="col-md-3 px-md-1">
+                      <div class="form-group">
+                        <label>Photo</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5 px-md-1">
+                      <div class="form-group">
+                        {{ form.photo(placeholder="Photo",class="form-control",type="file") }}
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-1 px-md-1"></div>
+                    <div class="col-md-1 px-md-1">
+
+                    <button type="submit" class="btn btn-fill btn-primary mt-3">Add People</button>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
